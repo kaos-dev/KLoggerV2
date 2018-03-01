@@ -29,3 +29,19 @@ fun test() {
     }
 }
 ```
+
+## Using klogger
+
+### Gradle
+```groovy
+allprojects {
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+
+dependencies {
+    compile 'com.github.kaosdev:klogger:0.1.2'
+}
+```
