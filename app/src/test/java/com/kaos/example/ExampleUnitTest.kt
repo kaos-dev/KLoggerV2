@@ -1,4 +1,4 @@
-package com.kaos.klogger
+package com.kaos.example
 
 import org.junit.Test
 

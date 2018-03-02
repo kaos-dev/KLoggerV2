@@ -8,11 +8,14 @@ import android.util.Log
  * Description:
  *
  */
-inline fun Any.tryLog(f: () -> Unit) {
-    try {
-        f()
-    } catch(e: Exception) {
-        this e e.message!!
+inline infix fun <reified T> T.tryLog(f: () -> Unit) {
+    val tag = when(this) {
+        is String -> this
+        else -> T::class.java.simpleName
+    }
+
+    try { tag i(f) } catch(e: Exception) {
+        tag e e.message!!
     }
 }
 
@@ -26,12 +29,12 @@ inline infix fun <reified T> T.i(mess: String) {
     Log.i(tag,mess)
 }
 //Lambda
-inline infix fun <reified T> T.i(call: T.() -> Any?) {
+inline infix fun <reified T> T.i(call: () -> Any?) {
     val tag = when(this) {
         is String -> this
         else -> T::class.java.simpleName
     }
-    Log.i(tag,"${call(this)}")
+    Log.i(tag,"${call()}")
 }
 
 /** Debug **/
@@ -44,12 +47,12 @@ inline infix fun <reified T> T.d(mess: String) {
     Log.d(tag,mess)
 }
 //Lambda
-inline infix fun <reified T> T.d(call: T.() -> Any?) {
+inline infix fun <reified T> T.d(call: () -> Any?) {
     val tag = when(this) {
         is String -> this
         else -> T::class.java.simpleName
     }
-    Log.d(tag,"${call(this)}")
+    Log.d(tag,"${call()}")
 }
 
 /** Error **/
@@ -62,13 +65,13 @@ inline infix fun <reified T> T.e(mess: String) {
     Log.e(tag,mess)
 }
 //Lambda
-inline infix fun <reified T> T.e(call: T.() -> Any?)  {
+inline infix fun <reified T> T.e(call: () -> Any?)  {
     val tag = when(this) {
         is String -> this
         else -> T::class.java.simpleName
     }
 
-    Log.e(tag,"${call(this)}")
+    Log.e(tag,"${call()}")
 }
 
 /** VERBOSE **/
@@ -81,12 +84,12 @@ inline infix fun <reified T> T.v(mess: String) {
     Log.v(tag,mess)
 }
 //Lambda
-inline infix fun <reified T> T.v(call: T.() -> Any?)  {
+inline infix fun <reified T> T.v(call: () -> Any?)  {
     val tag = when(this) {
         is String -> this
         else -> T::class.java.simpleName
     }
-    Log.v(tag,"${call(this)}")
+    Log.v(tag,"${call()}")
 }
 
 /** WARN **/
@@ -99,10 +102,11 @@ inline infix fun <reified T> T.w(mess: String) {
     Log.w(tag,mess)
 }
 //Lambda
-inline infix fun <reified T> T.w(call: T.() -> Any?) {
+inline infix fun <reified T> T.w(call: () -> Any?) {
     val tag = when (this) {
         is String -> this
         else -> T::class.java.simpleName
     }
-    Log.w(tag, "${call(this)}")
+    Log.w(tag, "${call()}")
 }
+

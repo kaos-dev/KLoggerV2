@@ -1,4 +1,4 @@
-package com.kaos.klogger
+package com.kaos.example
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
