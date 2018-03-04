@@ -3,9 +3,11 @@ package com.kaos.example
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
-import com.kaos.klogger.*
+import  com.kaos.klogger.*
 
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.experimental.async
+import kotlinx.coroutines.experimental.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,9 +17,9 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
 
-
         fab.setOnClickListener {
             test()
+
             Snackbar.make(it, "Logged", Snackbar.LENGTH_LONG)
                     .setAction("Ok, I wil see the logs", null).show()
         }
@@ -26,7 +28,14 @@ class MainActivity : AppCompatActivity() {
     fun test() {
         this d "That's cool"
         //on Any variable
-        Example.Pizza i "I want to eat you"
+        Example.pizza i "I want to eat you"
+
+        Example i {
+            pizza d {
+                "type: $type good? $good"
+            }
+            pizza
+        }
 
         i {
             Example.doSomething() //doSomething and Log the result
@@ -43,14 +52,19 @@ class MainActivity : AppCompatActivity() {
         //also d, e, w ,v and wtf
 
         //Try also this
-        tryLog {
+        Example tryLog {
+            eatPizzaWithException() //doSomething and then log any Exception
+        }
 
-            Example.eatPizzaWithException() //doSomething and then log any Exception
+        logTime {
+            (1..100).sumBy { it + 1 }
         }
     }
 
     object Example {
-        object Pizza
+        data class Pizza(val type: String, val good: Boolean)
+
+        val pizza = Pizza("Pepperoni", true)
 
         fun doSomething() = "Something done"
         fun eatPizza() = 42
