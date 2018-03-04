@@ -7,9 +7,9 @@ Expressive, simple yet powerful kotlin logger for Android
 fun test() {
     this d "That's cool"
     //on Any variable
-    MainActivity.Example.pizza i "I want to eat you"
+    Example.pizza i "I want to eat you"
 
-    MainActivity.Example i {
+    Example i {
         pizza d {
             "type: $type good? $good"
         }
@@ -17,7 +17,7 @@ fun test() {
     }
 
     i {
-        MainActivity.Example.doSomething() //doSomething and Log the result
+        Example.doSomething() //doSomething and Log the result
     }
     // or
     i {"Pizza"} //where Pizza can be Any? variable
@@ -25,13 +25,13 @@ fun test() {
     //with custom tags
     "myTag" e "pizza is too good"
     "myTag" i {
-        MainActivity.Example.eatPizza() //or "eatPizza" like before
+        Example.eatPizza() //or "eatPizza" like before
     }
 
     //also d, e, w ,v and wtf
 
     //Try also this
-    MainActivity.Example tryLog {
+    Example tryLog {
         eatPizzaWithException() //doSomething and then log any Exception
     }
 
