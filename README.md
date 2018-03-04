@@ -7,10 +7,17 @@ Expressive, simple yet powerful kotlin logger for Android
 fun test() {
     this d "That's cool"
     //on Any variable
-    Example.Pizza i "I want to eat you"
+    MainActivity.Example.pizza i "I want to eat you"
+
+    MainActivity.Example i {
+        pizza d {
+            "type: $type good? $good"
+        }
+        pizza
+    }
 
     i {
-        Example.doSomething() //doSomething and Log the result
+        MainActivity.Example.doSomething() //doSomething and Log the result
     }
     // or
     i {"Pizza"} //where Pizza can be Any? variable
@@ -18,14 +25,18 @@ fun test() {
     //with custom tags
     "myTag" e "pizza is too good"
     "myTag" i {
-       Example.eatPizza() //or "eatPizza" like before
+        MainActivity.Example.eatPizza() //or "eatPizza" like before
     }
 
     //also d, e, w ,v and wtf
 
     //Try also this
-    tryLog {
-        Example.doSomething() //doSomething and then log any Exception
+    MainActivity.Example tryLog {
+        eatPizzaWithException() //doSomething and then log any Exception
+    }
+
+    logTime {
+        (1..100).sumBy { it + 1 }
     }
 }
 ```
@@ -39,8 +50,7 @@ allprojects {
         maven { url 'https://jitpack.io' }
     }
 }
-
-
+//...
 dependencies {
     compile 'com.github.kaosdev:klogger:0.1.2'
 }

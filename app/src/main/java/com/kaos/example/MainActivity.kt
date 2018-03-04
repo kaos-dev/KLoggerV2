@@ -3,11 +3,8 @@ package com.kaos.example
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
-import  com.kaos.klogger.*
-
+import com.kaos.klogger.*
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.experimental.async
-import kotlinx.coroutines.experimental.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -76,3 +73,4 @@ class MainActivity : AppCompatActivity() {
     }
 
 }
+
