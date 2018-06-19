@@ -5,9 +5,9 @@ Expressive, simple yet powerful kotlin logger for Android
 ## Example usage
 ```kotlin
 fun test() {
-    this d "That's cool"
+    this i "s cool"
     //on Any variable
-    Example.pizza i "I want to eat you"
+    Example.pizza w "I want to eat you"
 
     Example i {
         pizza d {
